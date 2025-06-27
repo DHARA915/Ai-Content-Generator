@@ -27,7 +27,7 @@ interface FormData {
 
 const API_KEY: string = process.env.NEXT_PUBLIC_GOOGLE_GEMINI_API_KEY!;
 
-const CreateNewContent = (props: PageProps) => {//props: PageProps
+const CreateNewContent = () => {//props: PageProps
 
   const params = useParams();
   const templateSlug = params["template-slug"];
@@ -42,7 +42,7 @@ const CreateNewContent = (props: PageProps) => {//props: PageProps
     const { fetchContentCount } = useContent();
 
   const selectedTemplate: TEMPLATE | undefined = Templates?.find(
-    (item) => item.slug === props.params["template-slug"]
+    (item) => item.slug === templateSlug
   );
   //   const selectedTemplate: TEMPLATE | undefined = Templates?.find(
   //   (item) => item.slug === templateSlug
