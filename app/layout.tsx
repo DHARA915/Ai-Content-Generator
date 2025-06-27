@@ -33,6 +33,7 @@ export default function RootLayout({
   return (
     <ClerkProvider>
     <html lang="en">
+      {/* <link rel="icon" href="/favicon.png" /> */}
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
