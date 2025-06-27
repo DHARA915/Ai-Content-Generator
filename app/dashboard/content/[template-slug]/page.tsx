@@ -13,6 +13,7 @@ import { AIOutput } from "../../../../utils/Schema";
 import { useUser } from "@clerk/nextjs";
 import moment from "moment";
 import { useContent } from '../../../../utils/contexts/ContentContext';
+import { useParams } from "next/navigation";
 
 interface PageProps {
   params: {
@@ -26,7 +27,11 @@ interface FormData {
 
 const API_KEY: string = process.env.NEXT_PUBLIC_GOOGLE_GEMINI_API_KEY!;
 
-const CreateNewContent = (props: PageProps) => {
+const CreateNewContent = (props: PageProps) => {//props: PageProps
+
+  const params = useParams();
+  const templateSlug = params["template-slug"];
+
   const [isLoading, setIsLoading] = useState(false);
   const [generatedContent, setGeneratedContent] = useState("");
   const [progress, setProgress] = useState(0);
@@ -39,6 +44,10 @@ const CreateNewContent = (props: PageProps) => {
   const selectedTemplate: TEMPLATE | undefined = Templates?.find(
     (item) => item.slug === props.params["template-slug"]
   );
+  //   const selectedTemplate: TEMPLATE | undefined = Templates?.find(
+  //   (item) => item.slug === templateSlug
+  // );
+
 
   const generateAIContent = async (formData: FormData): Promise<void> => {
     const selectedPrompt = selectedTemplate?.aiPrompt || "";
