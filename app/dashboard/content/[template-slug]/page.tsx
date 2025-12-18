@@ -63,7 +63,7 @@ const CreateNewContent = () => {//props: PageProps
 
     try {
       const genAI = new GoogleGenerativeAI(API_KEY);
-      const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
+      const model = genAI.getGenerativeModel({ model: "models/gemini-1.5-flash-latest",});
 
       const result = await model.generateContent(finalPrompt);
       const response = await result.response;
